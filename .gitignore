@@ -1,0 +1,13 @@
+node_modules
+dist
+.pnpm-store
+.playwright-cli
+.DS_Store
+*.local
+.vite
+.env
+.env.local
+
+# vite-plugin-mkcert
+.cert
+.vite-plugin-mkcert

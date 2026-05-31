@@ -1,0 +1,73 @@
+/* Design tokens — 夏夜霓虹西瓜摊
+ * 主调:深夜紫底 · 西瓜红 · 霓虹黄 · 瓜皮绿
+ * 灵感:粤式糖水铺夜晚的招牌灯光打在水果上
+ */
+:root {
+  /* —— 表面 / 文字 —— */
+  --color-bg: oklch(15% 0.04 285);
+  --color-bg-deep: oklch(10% 0.05 280);
+  --color-surface: oklch(22% 0.06 280);
+  --color-surface-elevated: oklch(28% 0.07 280);
+  --color-text: oklch(96% 0.02 90);
+  --color-text-dim: oklch(70% 0.04 280);
+  --color-text-muted: oklch(50% 0.04 280);
+
+  /* —— 主色 —— */
+  --color-watermelon: oklch(70% 0.22 25); /* 西瓜瓤红 */
+  --color-watermelon-dark: oklch(55% 0.24 28);
+  --color-rind: oklch(82% 0.20 145); /* 瓜皮绿 */
+  --color-rind-dark: oklch(45% 0.18 150);
+  --color-seed: oklch(20% 0.02 60);
+
+  /* —— 霓虹强调色 —— */
+  --color-neon-yellow: oklch(94% 0.18 95);
+  --color-neon-pink: oklch(75% 0.28 0);
+  --color-neon-cyan: oklch(85% 0.18 200);
+
+  /* —— 字号(流体) —— */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
+  --text-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --text-xl: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
+  --text-hero: clamp(2.75rem, 1rem + 8vw, 6rem);
+
+  /* —— 间距 —— */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-section: clamp(3rem, 2rem + 5vw, 6rem);
+
+  /* —— 圆角 —— */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 9999px;
+
+  /* —— 动效 —— */
+  --duration-fast: 150ms;
+  --duration-normal: 280ms;
+  --duration-slow: 500ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* —— 霓虹辉光(组合阴影) —— */
+  --glow-yellow: 0 0 12px oklch(94% 0.18 95 / 0.7), 0 0 32px oklch(94% 0.18 95 / 0.35);
+  --glow-pink: 0 0 12px oklch(75% 0.28 0 / 0.7), 0 0 32px oklch(75% 0.28 0 / 0.35);
+  --glow-cyan: 0 0 12px oklch(85% 0.18 200 / 0.7), 0 0 32px oklch(85% 0.18 200 / 0.35);
+
+  /* —— z-index —— */
+  --z-canvas: 0;
+  --z-hud: 10;
+  --z-overlay: 20;
+  --z-modal: 30;
+}
+
+/* 系统字体栈,避免外部字体阻塞首屏 */
+:root {
+  --font-display:
+    'PingFang SC', 'Hiragino Sans GB', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
+}

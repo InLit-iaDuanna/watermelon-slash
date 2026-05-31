@@ -1,0 +1,268 @@
+.landing {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
+  height: 100%;
+  padding: env(safe-area-inset-top) var(--space-md) env(safe-area-inset-bottom);
+  background:
+    radial-gradient(ellipse at 80% -10%, oklch(35% 0.15 320 / 0.45), transparent 55%),
+    radial-gradient(ellipse at -10% 90%, oklch(40% 0.18 145 / 0.35), transparent 50%),
+    var(--color-bg-deep);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 噪点纹理,让背景不那么塑料感 */
+.landing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+  z-index: -1;
+}
+
+/* —— 顶部小标 —— */
+.landing__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-sm) 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.landing__brand-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-neon-yellow);
+  box-shadow: var(--glow-yellow);
+  animation: pulse 2.4s var(--ease-in-out-cubic) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+}
+
+/* —— Hero 主区 —— */
+.landing__hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-sm);
+}
+
+.landing__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid oklch(75% 0.28 0 / 0.4);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  color: var(--color-neon-pink);
+  background: oklch(75% 0.28 0 / 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.landing__title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  /* 把"切"做成霓虹粉、"瓜"做成西瓜红、"!"做成霓虹黄;在子 span 里覆盖 */
+  color: var(--color-text);
+  text-shadow: 0 2px 0 oklch(0% 0 0 / 0.4);
+}
+
+.landing__title-cut {
+  color: var(--color-neon-pink);
+  text-shadow: var(--glow-pink);
+}
+
+.landing__title-melon {
+  color: var(--color-watermelon);
+  text-shadow: 0 0 18px oklch(70% 0.22 25 / 0.7);
+}
+
+.landing__title-bang {
+  color: var(--color-neon-yellow);
+  text-shadow: var(--glow-yellow);
+  font-style: italic;
+}
+
+.landing__sub {
+  max-width: 28ch;
+  font-size: var(--text-base);
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
+
+.landing__lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.landing__lines li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  list-style: none;
+}
+
+.landing__lines li::before {
+  content: '';
+  display: inline-block;
+  width: 1.4rem;
+  height: 1px;
+  background: var(--color-neon-cyan);
+  box-shadow: var(--glow-cyan);
+  flex-shrink: 0;
+  transform: translateY(-0.35em);
+}
+
+/* —— 底部 CTA —— */
+.landing__cta-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: 0 var(--space-sm) var(--space-md);
+}
+
+.landing__cta {
+  position: relative;
+  width: 100%;
+  padding: 1.1rem var(--space-lg);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-bg-deep);
+  background: linear-gradient(
+    135deg,
+    var(--color-neon-yellow) 0%,
+    var(--color-watermelon) 60%,
+    var(--color-neon-pink) 100%
+  );
+  box-shadow:
+    0 0 0 1px oklch(94% 0.18 95 / 0.2),
+    0 14px 40px oklch(70% 0.22 25 / 0.45),
+    var(--glow-yellow);
+  transition:
+    transform var(--duration-fast) var(--ease-out-expo),
+    box-shadow var(--duration-fast) var(--ease-out-expo);
+}
+
+.landing__cta:active {
+  transform: scale(0.97);
+}
+
+.landing__cta::after {
+  content: '→';
+  margin-left: 0.6em;
+  font-weight: 400;
+}
+
+.landing__cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.landing__hint {
+  font-size: var(--text-xs);
+  text-align: center;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* —— 错误兜底 —— */
+.landing__fallback {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid oklch(75% 0.28 0 / 0.3);
+  border-radius: var(--radius-md);
+  background: oklch(75% 0.28 0 / 0.08);
+  font-size: var(--text-sm);
+  color: var(--color-neon-pink);
+}
+
+.landing__fallback-title {
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+/* —— 装饰:角落西瓜片 —— */
+.landing__deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.landing__deco--top-right {
+  top: -8%;
+  right: -18%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 380px;
+  max-height: 380px;
+  background:
+    radial-gradient(circle at 35% 35%, var(--color-watermelon) 0%, var(--color-watermelon-dark) 60%, transparent 70%),
+    radial-gradient(circle at 35% 35%, transparent 60%, var(--color-rind-dark) 65%, var(--color-rind) 78%, transparent 82%);
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.85;
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+.landing__deco--bottom-left {
+  bottom: 18%;
+  left: -25%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 320px;
+  max-height: 320px;
+  background: radial-gradient(circle at 60% 40%, oklch(85% 0.18 200 / 0.5), transparent 65%);
+  border-radius: 50%;
+  filter: blur(8px);
+  animation: float-slow 16s ease-in-out -8s infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(2%, -3%) rotate(8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing__brand-dot,
+  .landing__deco {
+    animation: none;
+  }
+}
